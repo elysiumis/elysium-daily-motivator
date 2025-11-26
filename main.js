@@ -62,27 +62,37 @@ function getStreakCelebration(streak) {
 }
 
 function onHabitCompleted(data) {
-  const settings = elysium.storage.get() || {};
+  const settings = elysium.storage.get("settings") || {};
   const enableStreakCelebration = settings.enableStreakCelebration !== false;
   const quoteCategory = settings.quoteCategory || "motivation";
 
-  elysium.habits.get(data.habitId).then(habit => {
-    if (!habit) return;
+  // API is synchronous, not Promise-based
+  const habit = elysium.habits.get(data.habitId);
 
-    if (enableStreakCelebration && habit.currentStreak > 0) {
-      const celebration = getStreakCelebration(habit.currentStreak);
-      if (celebration) {
-        elysium.ui.showNotification({ title: "Streak Milestone!", message: celebration, type: "success" });
-        return;
-      }
-    }
-
+  if (!habit) {
+    // Show quote even if habit not found
     const quote = getRandomQuote(quoteCategory);
     elysium.ui.showNotification({
       title: "Great job!",
       message: `"${quote.text}" — ${quote.author}`,
       type: "info"
     });
+    return;
+  }
+
+  if (enableStreakCelebration && habit.currentStreak > 0) {
+    const celebration = getStreakCelebration(habit.currentStreak);
+    if (celebration) {
+      elysium.ui.showNotification({ title: "Streak Milestone!", message: celebration, type: "success" });
+      return;
+    }
+  }
+
+  const quote = getRandomQuote(quoteCategory);
+  elysium.ui.showNotification({
+    title: "Great job!",
+    message: `"${quote.text}" — ${quote.author}`,
+    type: "info"
   });
 }
 
@@ -96,7 +106,7 @@ function showQuote() {
   });
 }
 
-elysium.events.on("habit:completed", onHabitCompleted);
+elysium.events.on("habit.completed", onHabitCompleted);
 elysium.commands.register("show-quote", showQuote);
 
 module.exports = { onLoad, onEnable, onDisable };
