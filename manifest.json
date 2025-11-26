@@ -7,7 +7,8 @@
   "description": "Shows an inspirational quote when you complete a habit and celebrates your streaks",
   "main": "main.js",
   "permissions": [
-    "read:habits"
+    "read:habits",
+    "notifications"
   ],
   "events": [
     "habit:completed"
