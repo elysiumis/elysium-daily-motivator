@@ -1,0 +1,44 @@
+{
+  "id": "com.elysium.daily-motivator",
+  "name": "Daily Motivator",
+  "version": "1.0.0",
+  "minAppVersion": "2.0.0",
+  "author": "Elysium Team",
+  "description": "Shows an inspirational quote when you complete a habit and celebrates your streaks",
+  "main": "main.js",
+  "permissions": [
+    "read:habits"
+  ],
+  "events": [
+    "habit:completed"
+  ],
+  "commands": [
+    {
+      "id": "show-quote",
+      "name": "Show Daily Quote",
+      "description": "Display today's motivational quote"
+    }
+  ],
+  "settings": [
+    {
+      "id": "enableStreakCelebration",
+      "type": "boolean",
+      "title": "Celebrate Streaks",
+      "description": "Show celebration messages for streak milestones",
+      "default": true
+    },
+    {
+      "id": "quoteCategory",
+      "type": "select",
+      "title": "Quote Category",
+      "description": "Choose the type of quotes to display",
+      "default": "motivation",
+      "options": [
+        { "value": "motivation", "label": "Motivation" },
+        { "value": "productivity", "label": "Productivity" },
+        { "value": "mindfulness", "label": "Mindfulness" },
+        { "value": "success", "label": "Success" }
+      ]
+    }
+  ]
+}
