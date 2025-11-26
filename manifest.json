@@ -2,16 +2,15 @@
   "id": "com.elysium.daily-motivator",
   "name": "Daily Motivator",
   "version": "1.0.0",
-  "minAppVersion": "1.0.0",
+  "minAppVersion": "2.0.0",
   "author": "Elysium Team",
   "description": "Shows an inspirational quote when you complete a habit and celebrates your streaks",
   "main": "main.js",
   "permissions": [
-    "read:habits",
-    "notifications"
+    "read:habits"
   ],
   "events": [
-    "habit.completed"
+    "habit:completed"
   ],
   "commands": [
     {
