@@ -96,7 +96,7 @@ function showQuote() {
   });
 }
 
-elysium.events.on("habit:completed", onHabitCompleted);
+elysium.events.on("habit.completed", onHabitCompleted);
 elysium.commands.register("show-quote", showQuote);
 
 module.exports = { onLoad, onEnable, onDisable };
