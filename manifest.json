@@ -1,6 +1,7 @@
 {
   "id": "com.elysium.daily-motivator",
   "name": "Daily Motivator",
+  "category": "workflow",
   "version": "1.0.0",
   "minAppVersion": "1.0.0",
   "author": "Elysium Team",
