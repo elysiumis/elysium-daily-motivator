@@ -2,10 +2,14 @@
   "id": "com.elysium.daily-motivator",
   "name": "Daily Motivator",
   "category": "workflow",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minAppVersion": "1.0.0",
   "author": "Elysium Team",
   "description": "Shows an inspirational quote when you complete a habit and celebrates your streaks",
+  "repo": "https://github.com/elysiumis/elysium-daily-motivator",
+  "supportLinks": [
+    { "label": "Website", "url": "https://elysium.is" }
+  ],
   "main": "main.js",
   "permissions": [
     "read:habits",
